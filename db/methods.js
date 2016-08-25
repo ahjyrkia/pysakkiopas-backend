@@ -27,25 +27,12 @@ module.exports.dropTables = () => {
 };
 
 module.exports.addTestData = () => Promise.all([
-  models.Item.create({
-    content: "Something something",
-  }),
-  models.Item.create({
-    content: "I'm a virus, press alt + f4 to stop me",
-  }),
-  models.User.create({
-    firstname: "Admin",
-    lastname: "Jokunen",
-    email: "admin@asdf.asdf",
-    passwordHash: "$2a$10$Fs0N7KD/xUH4NAfW2s1MoOh/yH3G7mAtGycMY5tMUvCGqiWWdaSue",
-    role: "admin",
-  }),
-  models.User.create({
-    firstname: "Matti",
-    lastname: "Menninkäinen",
-    email: "user@asdf.asdf",
-    passwordHash: "$2a$10$Fs0N7KD/xUH4NAfW2s1MoOh/yH3G7mAtGycMY5tMUvCGqiWWdaSue",
-    role: "user",
+  models.Stop.create({
+    code: "12345678",
+    name: "testipysakki",
+    dist: 50,
+    codeShort: "1234",
+    address: "testikatu 123"
   }),
 ])
 

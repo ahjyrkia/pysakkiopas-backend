@@ -5,8 +5,8 @@ const router = new express.Router();
 
 const auth = require("../middleware/authentication");
 
-const itemCtrl = require("../controllers/item");
-const userCtrl = require("../controllers/user");
+const stopCtrl = require("../controllers/stop");
+const routeCtrl = require("../controllers/route")
 
 const authTest = (req, res) => {
   res.json({
@@ -16,25 +16,22 @@ const authTest = (req, res) => {
 
 router.get("/auth", auth.authenticate, authTest);
 
-router.post("/login", userCtrl.loginUser);
-router.post("/user", userCtrl.saveOne);
-
-router.use("", auth.authenticate);
+// router.use("", auth.authenticate);
 
 // Routes for all users
 
-router.get("/item", itemCtrl.findAll);
-router.put("/item/:id", itemCtrl.updateOne);
-router.post("/item", itemCtrl.saveOne);
-// router.delete("/item/:id", itemCtrl.deleteOne);
+router.get("/stop", stopCtrl.findAll);
+router.get("/stop/:id", stopCtrl.findOne);
+router.get("/route/:coordinates", routeCtrl.findOne)
+router.get("/routes/:addresses", routeCtrl.findFullRoute)
+router.get("/origin/:coordinates", routeCtrl.findAddress)
 
-router.put("/user/:id", userCtrl.updateOne);
+// router.put("/stop/:id", StopCtrl.updateOne);
+// router.post("/stop", StopCtrl.saveOne);
+// router.delete("/Stop/:id", StopCtrl.deleteOne);
+
 
 // Routes accessisable only for admin
 
-router.use("", auth.onlyAdmin);
-
-router.get("/user", userCtrl.findAll);
-router.delete("/user/:id", userCtrl.deleteOne);
-
+// router.use("", auth.onlyAdmin);
 module.exports = router;
