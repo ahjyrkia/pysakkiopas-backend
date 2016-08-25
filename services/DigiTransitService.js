@@ -133,7 +133,7 @@ class DigiTransitService {
     getCoordinatesByAddress(address) {
         const options = {
             method: "GET",
-            uri: "http://api.digitransit.fi/geocoding/v1/search?text="+address+"&lang=fi&size=1"
+            uri: "https://api.digitransit.fi/geocoding/v1/search?text="+address+"&lang=fi&size=1"
         }
         return request(options)
     }
@@ -142,7 +142,7 @@ class DigiTransitService {
         var coords = coordinates.split(",");
         const options = {
             method: "GET",
-            uri: "http://api.digitransit.fi/geocoding/v1/reverse?point.lat=" + coords[0] + "+&point.lon=" + coords[1] + "&size=1"
+            uri: "https://api.digitransit.fi/geocoding/v1/reverse?point.lat=" + coords[0] + "+&point.lon=" + coords[1] + "&size=1"
         }
         return request(options);
     }
